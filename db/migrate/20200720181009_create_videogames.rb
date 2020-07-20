@@ -5,7 +5,7 @@ class CreateVideogames < ActiveRecord::Migration[5.2]
       t.string :release_year
       t.string :description
 
-      t.timestamps null: false
+      t.timestamps  null: false
     end
   end
 end
