@@ -8,10 +8,10 @@
 </head>
 <body>
   
-  <nav class="top-bar">
+  <nav class="top-bar"  id="edit-this">
     <h1><a href="/">LaunchGameReviews</a></h1>
 
-    <section class="top-bar-section">
+    <section class="top-bar-section" >
       <ul class="right">
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
