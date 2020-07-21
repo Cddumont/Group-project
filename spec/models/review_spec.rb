@@ -5,7 +5,12 @@ RSpec.describe Review, type: :model do
     it 'ensures rating and videogame_id presence' do
       game = Videogame.create(name: "fifa")
       review = Review.new(rating: 6, videogame: game).save
+      review2 = Review.new(body: "something", videogame: game).save
+      review3 = Review.new(rating: 3).save
       expect(review).to eq(true)
+      expect(review2).to eq(false)
+      expect(review3).to eq(false)
+
      end
     it 'ensures rating is an integer between 1 and 10' do
       game = Videogame.create(name: "fifa")
