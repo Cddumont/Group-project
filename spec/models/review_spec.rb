@@ -10,7 +10,6 @@ RSpec.describe Review, type: :model do
       expect(review).to eq(true)
       expect(review2).to eq(false)
       expect(review3).to eq(false)
-
      end
     it 'ensures rating is an integer between 1 and 10' do
       game = Videogame.create(name: "fifa")
