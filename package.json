@@ -51,7 +51,6 @@
 		"setupFiles": [
 			"./spec/javascript/support/enzyme.js"
 		],
-		"testURL": "http://localhost/" 
+		"testURL": "http://localhost/"
 	}
 }
-.
