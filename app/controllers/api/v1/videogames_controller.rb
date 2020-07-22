@@ -3,3 +3,5 @@ class Api::V1::VideogamesController < ApplicationController
     render json: Videogame.all
   end
 end
+
+
