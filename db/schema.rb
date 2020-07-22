@@ -44,5 +44,5 @@ ActiveRecord::Schema.define(version: 2020_07_21_142436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
 end
