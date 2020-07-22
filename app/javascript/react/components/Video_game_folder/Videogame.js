@@ -1,10 +1,13 @@
 import React from "react"
 
 const Videogame = props => {
+  
   return (
-    <ul>
-      <li>{props.name}</li>
-    </ul>
+    <div className="videogames">
+      <ul>
+        <ul>Title: {props.name}</ul>
+      </ul>
+    </div>
   )
 }
 
