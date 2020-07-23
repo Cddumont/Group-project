@@ -2,7 +2,11 @@ import React from 'react'
 
 const VideogameShowTile = (props) => {
   return (
-    <h1> wooo</h1>
+    <div>
+      <h1>{props.videogame.name}</h1>
+      <p>{props.videogame.release_year}</p>
+      <p>{props.videogame.description}</p>
+    </div>
   )
 }
 

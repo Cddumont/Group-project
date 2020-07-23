@@ -25,6 +25,7 @@ const VideogameShowContainer = (props) => {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
+
   return (
     <VideogameShowTile videogame={videogame} />
   )
