@@ -31,7 +31,9 @@ const VideogameFormContainer = (props) => {
           throw error
         }
       })
+      .then(response => response.json())
       .then((body) => {
+        debugger
         let newVideogame = body.videogame.text
         setNewVideogame(newVideogame)
       });
