@@ -6,11 +6,9 @@ const Videogame = props => {
   
   return (
     <div className="videogames">
-      <ul>
         <Link to={`/videogames/${props.id}`}>
-          <ul>Title: {props.name}</ul>
+          <p>Title: {props.name}</p>
         </Link>
-      </ul>
     </div>
   )
 }
