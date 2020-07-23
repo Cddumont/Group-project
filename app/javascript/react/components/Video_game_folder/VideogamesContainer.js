@@ -6,7 +6,9 @@ const VideogamesContainer = props => {
   const [videogamesData, setVideogamesData] = useState([])
 
   useEffect(() => {
-    fetch("/api/v1/videogames")
+    fetch("/api/v1/videogames", {
+      credentials: "same-origin"
+    })
     .then(response => {
       if (response.ok) {
         return response;
@@ -27,6 +29,7 @@ const VideogamesContainer = props => {
     return (
       <Videogame
         key={videogame.id}
+        id={videogame.id}
         name={videogame.name}
         release_year={videogame.release_year}
         description={videogame.description}
@@ -36,7 +39,7 @@ const VideogamesContainer = props => {
 
   return (
     <>
-      {videogamesComponents} 
+        {videogamesComponents} 
     </>
   )
 }

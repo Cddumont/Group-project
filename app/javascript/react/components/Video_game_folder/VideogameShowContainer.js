@@ -27,7 +27,9 @@ const VideogameShowContainer = (props) => {
   }, [])
 
   return (
-    <VideogameShowTile videogame={videogame} />
+    <div className="grid-container">
+      <VideogameShowTile videogame={videogame} />
+    </div>
   )
 }
 
