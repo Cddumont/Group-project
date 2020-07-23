@@ -20,7 +20,7 @@ const VideogamesContainer = props => {
     })
     .then(response => response.json())
     .then(body => {
-      setVideogamesData(body)
+      setVideogamesData(body.videogames)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   },[])

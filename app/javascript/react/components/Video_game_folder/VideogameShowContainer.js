@@ -24,8 +24,9 @@ const VideogameShowContainer = (props) => {
       })
       .then(response => response.json())
       .then(body => {
+        debugger
         setVideogame(body.videogame)
-        setReviews(body.reviews)
+        setReviews(body.videogame.reviews)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])

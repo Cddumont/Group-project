@@ -4,9 +4,6 @@ class Api::V1::VideogamesController < ApplicationController
   end
 
   def show
-    videogame = Videogame.find(params["id"])
-    reviews = videogame.reviews
-    
-    render json: {videogame: videogame, reviews: reviews}
+    render json: Videogame.find(params["id"])
   end
 end
