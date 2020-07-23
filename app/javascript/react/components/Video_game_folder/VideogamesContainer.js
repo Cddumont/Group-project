@@ -29,6 +29,7 @@ const VideogamesContainer = props => {
     return (
       <Videogame
         key={videogame.id}
+        id={videogame.id}
         name={videogame.name}
         releaseYear={videogame.release_year}
         description={videogame.description}
