@@ -30,7 +30,7 @@ const VideogamesContainer = props => {
       <Videogame
         key={videogame.id}
         name={videogame.name}
-        release_year={videogame.release_year}
+        releaseYear={videogame.release_year}
         description={videogame.description}
       />
     )

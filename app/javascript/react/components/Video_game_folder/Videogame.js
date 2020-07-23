@@ -4,9 +4,7 @@ const Videogame = props => {
   
   return (
     <div className="videogames">
-      <ul>
-        <ul>Title: {props.name}</ul>
-      </ul>
+      <p>Title: {props.name}</p>
     </div>
   )
 }
