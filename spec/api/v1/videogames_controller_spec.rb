@@ -16,12 +16,12 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
       get :index
       
       returned_json = JSON.parse(response.body)
+      
+      expect(returned_json["videogames"][0]["name"]).to eq(videogame1.name)
+      expect(returned_json["videogames"][0]["id"]).to eq(videogame1.id)
 
-      expect(returned_json[0]["name"]).to eq(videogame1.name)
-      expect(returned_json[0]["id"]).to eq(videogame1.id)
-
-      expect(returned_json[1]["name"]).to eq(videogame2.name)
-      expect(returned_json[1]["id"]).to eq(videogame2.id)
+      expect(returned_json["videogames"][1]["name"]).to eq(videogame2.name)
+      expect(returned_json["videogames"][1]["id"]).to eq(videogame2.id)
     end
   end
 
@@ -41,11 +41,26 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
 
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json.length).to eq(6)
-      expect(returned_json["name"]).to eq(videogame1.name)
-      expect(returned_json["id"]).to eq(videogame1.id)
-      expect(returned_json["release_year"]).to eq(videogame1.release_year)
-      expect(returned_json["description"]).to eq(videogame1.description)
+      expect(returned_json["videogame"].length).to eq(5)
+      expect(returned_json["videogame"]["name"]).to eq(videogame1.name)
+      expect(returned_json["videogame"]["id"]).to eq(videogame1.id)
+      expect(returned_json["videogame"]["release_year"]).to eq(videogame1.release_year)
+      expect(returned_json["videogame"]["description"]).to eq(videogame1.description)
+    end
+
+    it "returns all of the associated reviews for the videogame" do
+      review1 = Review.create(rating: 5, body: "short", title:"hi", videogame: videogame1)
+      Review.create(rating: 5, body: "hi", title:"short", videogame: videogame1)
+      Review.create(rating: 5, body: "hi", title:"short", videogame: videogame2)
+
+      get :show, params: {id: videogame1.id}
+
+      returned_json = JSON.parse(response.body)
+
+      expect(returned_json["videogame"]["reviews"].length).to eq(2)
+      expect(returned_json["videogame"]["reviews"][0]["rating"]).to eq(review1.rating)
+      expect(returned_json["videogame"]["reviews"][0]["body"]).to eq(review1.body)
+      expect(returned_json["videogame"]["reviews"][0]["title"]).to eq(review1.title)
     end
   end
 end
