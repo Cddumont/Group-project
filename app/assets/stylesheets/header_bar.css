@@ -1,11 +1,10 @@
-#edit-this {
+#nav-bar {
   color: rgb(230, 126, 126);
   background: Black;
 }
 
 .videogames {
-  width:20%;
-  height: 50px;
+  width: 25%;
   border-style: solid;
   float: left;
   margin:10px;
@@ -17,10 +16,10 @@ body {
 }
 
 a {
-  color: bisque;
   text-decoration: underline;
   background-color: black;
 }
+
 li{
   background-color: black;
 }

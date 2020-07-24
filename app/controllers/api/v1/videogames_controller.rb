@@ -14,11 +14,13 @@ class Api::V1::VideogamesController < ApplicationController
     end
   end
 
+  def show
+    render json: Videogame.find(params["id"]), serializer: VideogameShowSerializer
+  end
+
   private
 
   def videogame_params
     params.require(:videogame).permit([:name, :release_year, :description])
   end
 end
-
-

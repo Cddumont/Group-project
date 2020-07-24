@@ -1,12 +1,14 @@
 import React from "react"
 
+import { Link } from "react-router-dom"
+
 const Videogame = props => {
   
   return (
     <div className="videogames">
-      <ul>
-        <ul>Title: {props.name}</ul>
-      </ul>
+        <Link to={`/videogames/${props.id}`}>
+          <p>Title: {props.name}</p>
+        </Link>
     </div>
   )
 }

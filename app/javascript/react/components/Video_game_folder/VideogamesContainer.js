@@ -21,7 +21,7 @@ const VideogamesContainer = (props) => {
       })
       .then(response => response.json())
       .then(body => {
-        setVideogamesData(body)
+        setVideogamesData(body.videogames)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
@@ -30,8 +30,9 @@ const VideogamesContainer = (props) => {
     return (
       <Videogame
         key={videogame.id}
+        id={videogame.id}
         name={videogame.name}
-        release_year={videogame.release_year}
+        releaseYear={videogame.release_year}
         description={videogame.description}
       />
     )
