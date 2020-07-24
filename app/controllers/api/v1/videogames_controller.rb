@@ -6,12 +6,11 @@ class Api::V1::VideogamesController < ApplicationController
   end
 
   def create
-    binding.pry
     videogame = Videogame.new(videogame_params)
     if videogame.save
       render json: {submitted:true} 
     else
-      render json: { error: videogame.errors.full_messages, submitted:false }
+      render json: { error: videogame.errors.full_messages.to_sentence, submitted:false }
     end
   end
 

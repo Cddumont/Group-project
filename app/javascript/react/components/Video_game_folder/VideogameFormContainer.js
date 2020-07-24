@@ -5,11 +5,11 @@ const VideogameFormContainer = (props) => {
   const [getNewVideogame, setNewVideogame] = useState({
     name: "",
     release_year: "",
-    description: ""
+    description: "",
   });
-  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
   const handleFieldChange = (event) => {
     setNewVideogame({
@@ -19,32 +19,30 @@ const VideogameFormContainer = (props) => {
   };
 
   const addNewVideogame = (formInfo) => {
-    fetch('/api/v1/videogames', {
+    fetch("/api/v1/videogames", {
       credentials: "same-origin",
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(formInfo),
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
-    .then(response => {
-      if (response.ok) {
-        return response
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage)
-        throw error
-      }
-    })
-    .then(response => response.json())
-    .then((body) => {
-      if (body.submitted) {
-        setShouldRedirect(true)
-      } else (
-        setError(body.error)
-      )
-    });
+      .then((response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then((response) => response.json())
+      .then((body) => {
+        if (body.submitted) {
+          setShouldRedirect(true);
+        } else setError(body.error);
+      });
   };
 
   const handleSubmit = (event) => {
@@ -52,15 +50,14 @@ const VideogameFormContainer = (props) => {
     addNewVideogame(getNewVideogame);
   };
 
-  let errorMessage = <></>
-
+  let errorMessage = <></>;
 
   if (error !== "") {
-    errorMessage = <p>{error}</p>
+    errorMessage = <p className="error-message">{error}</p>;
   }
 
   if (shouldRedirect) {
-    return < Redirect to="/" />
+    return <Redirect to="/" />;
   }
 
   return (
@@ -78,13 +75,22 @@ const VideogameFormContainer = (props) => {
         </label>
         <label>
           Videogame Release Year:
-          <input name="release_year" id="release_year" type="text" onChange={handleFieldChange} />
+          <input
+            name="release_year"
+            id="release_year"
+            type="text"
+            onChange={handleFieldChange}
+          />
         </label>
         <label>
           Videogame Description:
-          <input name="description" id="description" type="text" onChange={handleFieldChange} />
+          <input
+            name="description"
+            id="description"
+            type="text"
+            onChange={handleFieldChange}
+          />
         </label>
-
 
         <div className="button-group">
           <input className="button" type="submit" value="Submit" />
