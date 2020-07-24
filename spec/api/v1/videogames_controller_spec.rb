@@ -63,4 +63,58 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
       expect(returned_json["videogame"]["reviews"][0]["title"]).to eq(review1.title)
     end
   end
+  describe "POST#create" do
+    it "creates a new VideoGame" do
+      post_json = {
+        videogame: {
+          name: "Title",
+          release_year: "1854",
+          description: "describes game"
+        }
+      }
+
+      prev_count = Videogame.count
+      post :create, params: post_json
+      expect(Videogame.count).to eq(prev_count + 1)
+    end
+    it "returns the json with a key of submitted:true if successful" do
+      post_json = {
+        videogame: {
+          name: "Title",
+          release_year: "1854",
+          description: "describes game"
+        }
+      }
+
+      post :create, params: post_json
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["submitted"]).to eq true
+    end
+    it "if invalid form submission, returns the json with a key of submitted:false and a key of error" do
+      post_json = {
+        videogame: {
+          name: "",
+          release_year: "1854",
+          description: "describes game"
+        }
+      }
+
+      post :create, params: post_json
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["submitted"]).to eq false
+      expect(returned_json["error"]).to eq "Name can't be blank"
+    end
+  end
 end
