@@ -20,7 +20,6 @@ const VideogamesContainer = props => {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
         setVideogamesData(body.videogames)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))

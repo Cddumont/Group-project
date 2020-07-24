@@ -24,7 +24,6 @@ const VideogameShowContainer = (props) => {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
         setVideogame(body.videogame)
         setReviews(body.videogame.reviews)
       })
