@@ -16,12 +16,12 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
       get :index
       
       returned_json = JSON.parse(response.body)
+      
+      expect(returned_json["videogames"][0]["name"]).to eq(videogame1.name)
+      expect(returned_json["videogames"][0]["id"]).to eq(videogame1.id)
 
-      expect(returned_json[0]["name"]).to eq(videogame1.name)
-      expect(returned_json[0]["id"]).to eq(videogame1.id)
-
-      expect(returned_json[1]["name"]).to eq(videogame2.name)
-      expect(returned_json[1]["id"]).to eq(videogame2.id)
+      expect(returned_json["videogames"][1]["name"]).to eq(videogame2.name)
+      expect(returned_json["videogames"][1]["id"]).to eq(videogame2.id)
     end
   end
 
@@ -41,7 +41,7 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
 
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["videogame"].length).to eq(6)
+      
       expect(returned_json["videogame"]["name"]).to eq(videogame1.name)
       expect(returned_json["videogame"]["id"]).to eq(videogame1.id)
       expect(returned_json["videogame"]["release_year"]).to eq(videogame1.release_year)
@@ -57,10 +57,10 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
 
       returned_json = JSON.parse(response.body)
       
-      expect(returned_json["reviews"].length).to eq(2)
-      expect(returned_json["reviews"][0]["rating"]).to eq(review1.rating)
-      expect(returned_json["reviews"][0]["body"]).to eq(review1.body)
-      expect(returned_json["reviews"][0]["title"]).to eq(review1.title)
+      
+      expect(returned_json["videogame"]["reviews"][0]["rating"]).to eq(review1.rating)
+      expect(returned_json["videogame"]["reviews"][0]["body"]).to eq(review1.body)
+      expect(returned_json["videogame"]["reviews"][0]["title"]).to eq(review1.title)
     end
   end
 end

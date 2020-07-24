@@ -4,6 +4,6 @@ class Api::V1::VideogamesController < ApplicationController
   end
 
   def show
-    render json: Videogame.find(params["id"])
+    render json: Videogame.find(params["id"]), serializer: VideogameShowSerializer
   end
 end

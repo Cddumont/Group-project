@@ -6,7 +6,7 @@ import VideogameShowContainer from "./Video_game_folder/VideogameShowContainer"
 
 export const App = (props) => {
   return (
-    <div clasName="App">
+    <div className="App">
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={VideogamesContainer} />

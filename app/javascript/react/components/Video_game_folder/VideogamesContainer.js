@@ -9,21 +9,22 @@ const VideogamesContainer = props => {
     fetch("/api/v1/videogames", {
       credentials: "same-origin"
     })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage);
-        throw (error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      setVideogamesData(body.videogames)
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`))
-  },[])
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw (error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        debugger
+        setVideogamesData(body.videogames)
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }, [])
 
   const videogamesComponents = videogamesData.map((videogame) => {
     return (
@@ -39,7 +40,7 @@ const VideogamesContainer = props => {
 
   return (
     <>
-        {videogamesComponents} 
+      {videogamesComponents}
     </>
   )
 }
