@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
 
 import Videogame from "./Videogame"
 
@@ -38,7 +39,8 @@ const VideogamesContainer = (props) => {
 
   return (
     <>
-      {videogamesComponents}
+      <div className="grid-x">{videogamesComponents}</div>
+      <Link to="/videogames/new">Add New Videogame</Link>
     </>
   )
 }

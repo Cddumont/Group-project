@@ -4,12 +4,14 @@ class Api::V1::VideogamesController < ApplicationController
   def index
     render json: Videogame.all
   end
+
   def create
+    binding.pry
     videogame = Videogame.new(videogame_params)
     if videogame.save
-      render json: { videogame: videogame }
+      render json: {submitted:true} 
     else
-      render json: { error: videogame.errors.full_messages }, status: :unprocessable_entity
+      render json: { error: videogame.errors.full_messages, submitted:false }
     end
   end
 
