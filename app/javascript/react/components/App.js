@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import VideogamesContainer from "./Video_game_folder/VideogamesContainer";
 import VideogameFormContainer from "./Video_game_folder/VideogameFormContainer";
-import VideogameShowContainer from './Video_game_folder/VideogameShowContainer'
+import VideogameShowContainer from "./Video_game_folder/VideogameShowContainer";
 
 export const App = (props) => {
   return (
