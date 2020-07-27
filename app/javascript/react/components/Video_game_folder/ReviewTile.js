@@ -15,10 +15,29 @@ const ReviewTile = props => {
   } else {
     body = <></>
   }
+  let rating
+
+  switch (props.rating) {
+    case 1:
+      rating = "★☆☆☆☆"
+      break
+    case 2:
+      rating = "★★☆☆☆"
+      break
+    case 3:
+      rating = "★★★☆☆"
+      break
+    case 4:
+      rating = "★★★★☆"
+      break
+    case 5:
+      rating = "★★★★★"
+      break
+  }
 
   return(
     <div className="callout review-box">
-      <p>Rating: {props.rating}</p>
+      <p>Rating: {rating}</p>
       {title}
       {body}
     </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 
 import VideogameShowTile from "./VideogameShowTile"
 import ReviewTile from "./ReviewTile"
+import ReviewFormContainer from './ReviewFormContainer'
 
 const VideogameShowContainer = (props) => {
   const [videogame, setVideogame] = useState({})
@@ -30,6 +31,10 @@ const VideogameShowContainer = (props) => {
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }, [])
 
+  const addNewReview = (newReview) => {
+    setReviews([...reviews, newReview])
+  }
+
   const reviewsComponents = reviews.map((review) => {
     return (
       <ReviewTile
@@ -45,6 +50,10 @@ const VideogameShowContainer = (props) => {
     <div className="grid-container">
       <VideogameShowTile videogame={videogame} />
       {reviewsComponents}
+      <ReviewFormContainer
+        gameId={gameId}
+        addNewReview={addNewReview}
+      />
     </div>
   )
 }
