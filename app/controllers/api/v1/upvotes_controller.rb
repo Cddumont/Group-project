@@ -1,19 +1,12 @@
 class Api::V1::UpvotesController < ApplicationController
   def create
-    # binding.pry
     upvote = Upvote.new(user: current_user)
     upvote.review = Review.find(params[:review_id])
+    reviews = Review.where(videogame: upvote.review.videogame)
     if upvote.save 
-      # binding.pry
-      render json: upvote.review
+      render json: reviews
     else
-      binding.pry
+      render json: { errors: upvote.errors.full_messages.to_sentence }
     end
   end
-  
-  private
-
-    # def upvote_params
-    #   params.require(:upvote).permit(:user)
-    # end
 end

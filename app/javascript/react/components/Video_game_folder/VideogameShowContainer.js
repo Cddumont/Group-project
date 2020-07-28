@@ -7,7 +7,7 @@ import ReviewFormContainer from './ReviewFormContainer'
 const VideogameShowContainer = (props) => {
   const [videogame, setVideogame] = useState({})
   const [reviews, setReviews] = useState([])
-
+  
   let gameId = props.match.params.id
 
   useEffect(() => {
@@ -36,13 +36,10 @@ const VideogameShowContainer = (props) => {
   }
 
   const updateReviews = (updatedReview) => {
-    let index = reviews.findIndex((review) => review.id === updatedReview.id)
-    let reviewsArray = reviews
-    reviewsArray[index] = updatedReview
-    setReviews(reviewsArray)
+    setReviews(updatedReview)
   }
 
-  const reviewsComponents = reviews.map((review) => {
+  const reviewsComponents = reviews.map((review) => {    
     return (
       <ReviewTile
         key={review.id}

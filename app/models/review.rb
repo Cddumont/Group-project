@@ -4,8 +4,9 @@ class Review < ApplicationRecord
 
   belongs_to :videogame
   has_many :upvotes, dependent: :destroy
-
+  has_many :downvotes, dependent: :destroy
+  
   def vote_count
-    self.upvotes.count
+    self.upvotes.count - self.downvotes.count
   end
 end
