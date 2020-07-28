@@ -35,13 +35,23 @@ const VideogameShowContainer = (props) => {
     setReviews([...reviews, newReview])
   }
 
+  const updateReviews = (updatedReview) => {
+    let index = reviews.findIndex((review) => review.id === updatedReview.id)
+    let reviewsArray = reviews
+    reviewsArray[index] = updatedReview
+    setReviews(reviewsArray)
+  }
+
   const reviewsComponents = reviews.map((review) => {
     return (
       <ReviewTile
         key={review.id}
+        id={review.id}
         rating={review.rating}
         body={review.body}
         title={review.title}
+        voteCount={review.vote_count}
+        updateReviews={updateReviews}
       />
     )
   })
