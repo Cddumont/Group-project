@@ -13,6 +13,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
+      user = FactoryBot.create(:user)
+      sign_in user
 
       prev_count = Review.count
       post :create, params: post_json
@@ -27,6 +29,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
+      user = FactoryBot.create(:user)
+      sign_in user
 
       post :create, params: post_json
       returned_json = JSON.parse(response.body)
@@ -50,7 +54,9 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
-
+      user = FactoryBot.create(:user)
+      sign_in user
+      
       post :create, params: post_json
       returned_json = JSON.parse(response.body)
 
@@ -61,33 +67,5 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       expect(returned_json).to_not be_kind_of(Array)
       expect(returned_json["submitted"]).to eq false
     end
-    RSpec.configure do |config|
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Warden::Test::Helpers
-end
-
-RSpec.describe API::V1::ReviewsController, type: :controller do
-  describe "GET#index" do
-    it "should return information about the current user" do
-      user = FactoryBot.create(:user)
-      sign_in user
-      get :index
-
-      returned_json = JSON.parse(response.body)
-      expect(response.status).to eq 200
-      expect(returned_json["user"]["first_name"]).to eq user.first_name
-      expect(returned_json["user"]["last_name"]).to eq user.last_name
-    end
   end
-
-  scenario 'specify valid credentials' do
-    visit new_user_session_path
-  
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-  
-    click_button 'Log in'
-    end
-  end
-end
 end

@@ -1,5 +1,6 @@
 class Api::V1::VideogamesController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     render json: Videogame.all
