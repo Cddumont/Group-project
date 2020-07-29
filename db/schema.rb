@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2020_07_28_182323) do
     t.bigint "videogame_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "vote_total", default: 0, null: false
     t.index ["videogame_id"], name: "index_reviews_on_videogame_id"
   end
 

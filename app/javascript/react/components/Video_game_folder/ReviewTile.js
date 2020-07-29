@@ -38,6 +38,7 @@ const ReviewTile = props => {
 
   const upvoteClick = (event) => {
     event.preventDefault()
+    setErrors("")
     fetch(`/api/v1/reviews/${props.id}/upvotes`, {
       credentials: "same-origin",
       method: "POST",
@@ -57,9 +58,9 @@ const ReviewTile = props => {
       })
       .then(response => response.json())
       .then(body => {
-        if (body.reviews) { 
+        if (body.reviews) {
           props.updateReviews(body.reviews)
-        } else if (body.errors) { 
+        } else if (body.errors) {
           setErrors(body.errors)
         }
       })
@@ -68,6 +69,7 @@ const ReviewTile = props => {
 
   const downvoteClick = (event) => {
     event.preventDefault()
+    setErrors("")
     fetch(`/api/v1/reviews/${props.id}/downvotes`, {
       credentials: "same-origin",
       method: "POST",
@@ -87,9 +89,9 @@ const ReviewTile = props => {
       })
       .then(response => response.json())
       .then(body => {
-        if (body.reviews) { 
+        if (body.reviews) {
           props.updateReviews(body.reviews)
-        } else if (body.errors) { 
+        } else if (body.errors) {
           setErrors(body.errors)
         }
       })
@@ -107,7 +109,7 @@ const ReviewTile = props => {
   }
 
 
-  return(
+  return (
     <div className="callout review-box">
       {errorMessages}
       <p>Rating: {rating}</p>
