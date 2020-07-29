@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
   describe "POST#create" do
+    binding.pry
     let!(:videogame1) {Videogame.create(name:"Spyro")}
     let!(:videogame2) {Videogame.create(name:"Sonic The Hedgehog")}
     it "creates a new review" do
