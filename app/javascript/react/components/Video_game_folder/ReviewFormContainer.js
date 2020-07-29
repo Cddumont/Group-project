@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import ReactStars from 'react-stars'
+
 const ReviewFormContainer = props => {
   const [getNewReview, setNewReview] = useState({
     rating: "",
@@ -8,6 +10,7 @@ const ReviewFormContainer = props => {
     videogame_id: props.gameId
   });
   const [errors, setErrors] = useState("")
+  const [starsKey, setStarsKey] = useState(Math.random())
 
   const handleFieldChange = (event) =>{
     setNewReview({
@@ -16,12 +19,20 @@ const ReviewFormContainer = props => {
     });
   }
 
+  const starChange = (rating) => {
+    setNewReview({
+      ...getNewReview,
+      rating: rating
+    })
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     addNewReview(getNewReview)
   }
 
   const clearForm = () => {
+    setStarsKey(Math.random())
     setNewReview({
       rating: "",
       title: "",
@@ -69,19 +80,16 @@ const ReviewFormContainer = props => {
   return(
     <div>
       <form onSubmit={handleSubmit} className="new-review-form callout">
-      <h3>Add New Review:</h3>
-      {errorMessage}
-        <label>
-          Rating:
-          <select id="rating" value={getNewReview.rating} onChange={handleFieldChange}>
-            <option value={null}>Select Rating</option>
-            <option value="1">★☆☆☆☆</option>
-            <option value="2">★★☆☆☆</option>
-            <option value="3">★★★☆☆</option>
-            <option value="4">★★★★☆</option>
-            <option value="5">★★★★★</option>
-          </select>
-        </label>
+        <h3>Add New Review:</h3>
+        {errorMessage}
+        <ReactStars
+          key={starsKey}
+          count={5}
+          onChange={starChange}
+          size={24}
+          color2={'#F24E4E'}
+          half={false}
+        />
         <label>
           Title (optional):
           <input
