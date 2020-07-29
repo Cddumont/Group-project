@@ -56,7 +56,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       }
       user = FactoryBot.create(:user)
       sign_in user
-      
+
       post :create, params: post_json
       returned_json = JSON.parse(response.body)
 
