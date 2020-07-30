@@ -31,12 +31,12 @@ const VideogameFormContainer = (props) => {
     .then((response) => {
       if (response.ok) {
         return response;
-      } else if (response.status===401) {
+      } else if ( response.status === 401 ) {
         setError("You must sign in before submitting a review!");
         let errorMessage = `${response.status} (${response.statusText})`,
         error = new Error(errorMessage)
         throw error;
-      } else{ 
+      } else { 
         let errorMessage = `${response.status} (${response.statusText})`,
         error = new Error(errorMessage);
         throw error;

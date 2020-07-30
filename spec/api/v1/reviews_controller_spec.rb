@@ -40,7 +40,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["submitted"]).to eq true
       expect(returned_json["review"]["rating"]).to eq (Review.last.rating)
       expect(returned_json["review"]["body"]).to eq (Review.last.body)
       expect(returned_json["review"]["title"]).to eq (Review.last.title)
@@ -65,7 +64,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["submitted"]).to eq false
+      expect(returned_json["error"]).to eq ("Please select a rating")
     end
   end
 end

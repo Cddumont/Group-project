@@ -54,24 +54,19 @@ const ReviewFormContainer = props => {
     .then((response) => {
       if (response.ok) {
         return response;
-      } else if (response.status===401) {
-        setErrors("You must sign in before submitting a review!");
-        let errorMessage = `${response.status} (${response.statusText})`,
-        error = new Error(errorMessage)
-        throw error;
-      } else{ 
+      } else { 
         let errorMessage = `${response.status} (${response.statusText})`,
         error = new Error(errorMessage);
         throw error;
       }})
     .then((response) => response.json())
     .then((body) => {
-      if (body.submitted) {
+      if (body.review) {
         props.addNewReview(body.review)
         clearForm()
         setErrors("")
       } else {
-        setErrors("Please select a rating")
+        setErrors(body.error)
       }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
