@@ -8,5 +8,10 @@ FactoryBot.define do
     sequence(:username) { |n| "username#{n}" }
     password { 'password' }
     password_confirmation { 'password' }
+    role { 'member' }
+
+    trait :admin do 
+      role { 'admin' }
+    end
   end
 end

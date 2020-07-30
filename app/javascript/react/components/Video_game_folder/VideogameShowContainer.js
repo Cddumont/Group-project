@@ -79,6 +79,7 @@ const VideogameShowContainer = (props) => {
         rating={review.rating}
         body={review.body}
         title={review.title}
+        admin={videogame.admin_user}
         voteCount={review.vote_count}
         updateReviews={updateReviews}
       />
@@ -88,6 +89,11 @@ const VideogameShowContainer = (props) => {
   let errorMsg = <></>
   if (errors !== "") {
     errorMsg = <p className="error-message">{errors}</p>
+  }
+
+  let deleteButton = <></>
+  if (videogame.admin_user) {
+    deleteButton = <div className="button cell" onClick={deleteVideogame}>Delete Videogame</div>
   }
 
   if (shouldRedirect) {
@@ -103,7 +109,7 @@ const VideogameShowContainer = (props) => {
         addNewReview={addNewReview}
       />
       {errorMsg}
-    <div className="button cell" onClick={deleteVideogame}>Delete Videogame</div>
+      {deleteButton}
     </div>
   )
 }

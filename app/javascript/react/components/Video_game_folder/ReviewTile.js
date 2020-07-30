@@ -2,29 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 const ReviewTile = props => {
   const [errors, setErrors] = useState("")
-  const [admin, setAdmin] = useState(false)
-
-  useEffect(() => {
-    fetch(`/api/v1/reviews/`, {
-      credentials: 'same-origin'
-    })
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-          throw (error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        if (body.admin) {
-          setAdmin(true)
-        }
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`))
-  }, [])
 
   let title
   if (props.title) {
@@ -163,8 +140,7 @@ const ReviewTile = props => {
   }
 
   let deleteButton = <></>
-
-  if (admin) {
+  if (props.admin) {
     deleteButton = <div className="button cell" onClick={deleteReview}>Delete</div>
   }
 
