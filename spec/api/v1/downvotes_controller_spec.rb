@@ -15,9 +15,7 @@ RSpec.describe Api::V1::DownvotesController, type: :controller do
     end
 
     it "returns error message if user has already downvoted" do
-      binding.pry
       sign_in user
-      binding.pry
       Downvote.create(user: user, review: review1)
       
       post :create, params: {review_id: review1.id}
