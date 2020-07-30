@@ -7,7 +7,7 @@ const Videogame = props => {
   return (
     <div className="videogames">
         <Link to={`/videogames/${props.id}`}>
-          <p>Title: {props.name}</p>
+          <p>{props.name}</p>
         </Link>
     </div>
   )

@@ -101,7 +101,12 @@ const VideogameShowContainer = (props) => {
   }
 
   return (
-    <div className="grid-container">
+    <div className="grid-container" style={{
+      backgroundImage: `url(${videogame.image})`,
+      width: '100%',
+      height: '100%',
+      backgroundPosition: 'center'
+    }}>
       <VideogameShowTile videogame={videogame} />
       {reviewsComponents}
       <ReviewFormContainer
