@@ -13,6 +13,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
+      user = FactoryBot.create(:user)
+      sign_in user
 
       prev_count = Review.count
       post :create, params: post_json
@@ -27,6 +29,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
+      user = FactoryBot.create(:user)
+      sign_in user
 
       post :create, params: post_json
       returned_json = JSON.parse(response.body)
@@ -50,6 +54,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
+      user = FactoryBot.create(:user)
+      sign_in user
 
       post :create, params: post_json
       returned_json = JSON.parse(response.body)

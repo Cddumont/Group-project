@@ -73,6 +73,9 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
         }
       }
 
+      user = FactoryBot.create(:user)
+      sign_in user
+
       prev_count = Videogame.count
       post :create, params: post_json
       expect(Videogame.count).to eq(prev_count + 1)
@@ -85,6 +88,8 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
           description: "describes game"
         }
       }
+      user = FactoryBot.create(:user)
+      sign_in user
 
       post :create, params: post_json
       returned_json = JSON.parse(response.body)
@@ -104,7 +109,9 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
           description: "describes game"
         }
       }
-
+      user = FactoryBot.create(:user)
+      sign_in user
+      
       post :create, params: post_json
       returned_json = JSON.parse(response.body)
 

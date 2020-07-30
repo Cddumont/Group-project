@@ -28,21 +28,26 @@ const VideogameFormContainer = (props) => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-          throw error;
-        }
-      })
+    .then((response) => {
+      if (response.ok) {
+        return response;
+      } else if (response.status===401) {
+        setError("You must sign in before submitting a review!");
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage)
+        throw error;
+      } else{ 
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw error;
+      }})
       .then((response) => response.json())
       .then((body) => {
         if (body.submitted) {
           setShouldRedirect(true);
         } else setError(body.error);
-      });
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
   };
 
   const handleSubmit = (event) => {
@@ -62,8 +67,8 @@ const VideogameFormContainer = (props) => {
 
   return (
     <div>
-      {errorMessage}
       <form onSubmit={handleSubmit} className="new-videogame-form callout">
+      {errorMessage}
         <label>
           Videogame Name:
           <input
