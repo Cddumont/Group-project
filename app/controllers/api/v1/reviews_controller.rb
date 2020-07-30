@@ -2,14 +2,6 @@ class Api::V1::ReviewsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
   before_action :authorize_user, except: [:create]
   before_action :authenticate_user
-  
-  def index
-    if current_user.admin?
-      render json: { admin: true }
-    else
-      render json: { admin: false }
-    end
-  end
 
   def create
     review = Review.new(review_params)
