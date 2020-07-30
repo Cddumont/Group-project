@@ -8,6 +8,10 @@ class User < ApplicationRecord
   
   has_many :upvotes
   has_many :downvotes
+
+  def admin?
+    role == "admin"
+  end
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

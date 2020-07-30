@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
+  let!(:user) { FactoryBot.create(:user) }
+
   describe "POST#create" do
     let!(:videogame1) {Videogame.create(name:"Spyro")}
     let!(:videogame2) {Videogame.create(name:"Sonic The Hedgehog")}
@@ -13,7 +15,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
-      user = FactoryBot.create(:user)
       sign_in user
 
       prev_count = Review.count
@@ -29,7 +30,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
-      user = FactoryBot.create(:user)
       sign_in user
 
       post :create, params: post_json
@@ -40,7 +40,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["submitted"]).to eq true
       expect(returned_json["review"]["rating"]).to eq (Review.last.rating)
       expect(returned_json["review"]["body"]).to eq (Review.last.body)
       expect(returned_json["review"]["title"]).to eq (Review.last.title)
@@ -54,7 +53,6 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
           videogame_id: videogame1.id
         }
       }
-      user = FactoryBot.create(:user)
       sign_in user
 
       post :create, params: post_json
@@ -65,7 +63,25 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["submitted"]).to eq false
+      expect(returned_json["error"]).to eq ("Please select a rating")
+    end
+  end
+  describe "DELETE#destroy" do
+    let!(:videogame1) {Videogame.create(name:"Spyro")}
+
+    it "should destroy the selected review if admin" do
+      admin_user = FactoryBot.create(:user, :admin)
+      sign_in admin_user
+
+      review = Review.create(rating: 3, videogame: videogame1)
+      review_count = Review.all.count
+
+      delete :destroy, params: {id: review.id}
+
+      expect(Review.all.count).to eq(review_count - 1)
+    end
+
+    it "should not destroy is not signed in" do
     end
   end
 end

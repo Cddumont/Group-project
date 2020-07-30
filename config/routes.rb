@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :videogames, only: [:index, :create, :show]
-      resources :reviews, only: [:create] do
+      resources :videogames, only: [:index, :create, :show, :destroy]
+      resources :reviews, only: [:index, :create, :destroy] do
         resources :upvotes, only: [:create]
         resources :downvotes, only: [:create]
       end
