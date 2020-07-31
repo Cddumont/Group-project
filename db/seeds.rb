@@ -1,7 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
 require 'betterlorem'
-require 'factory_bot'
 
 Videogame.destroy_all
 Review.destroy_all
