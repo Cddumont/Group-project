@@ -3,20 +3,11 @@
   background: Black;
 }
 
-.videogames {
-  width: 25%;
-  border-style: solid;
-  float: left;
-  margin:10px;
-  color:black;
-}
-
 body {
   background-color: bisque;
 }
 
 a {
-  text-decoration: underline;
   background-color: black;
 }
 

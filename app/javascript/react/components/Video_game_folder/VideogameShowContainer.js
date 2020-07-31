@@ -71,7 +71,7 @@ const VideogameShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  const reviewsComponents = reviews.map((review) => {    
+  const reviewsComponents = reviews.sort((a,b) => b.vote_count - a.vote_count).map((review) => {    
     return (
       <ReviewTile
         key={review.id}
@@ -101,7 +101,12 @@ const VideogameShowContainer = (props) => {
   }
 
   return (
-    <div className="grid-container">
+    <div className="grid-container" style={{
+      backgroundImage: `url(${videogame.image})`,
+      width: '100%',
+      height: '100%',
+      backgroundPosition: 'center'
+    }}>
       <VideogameShowTile videogame={videogame} />
       {reviewsComponents}
       <ReviewFormContainer

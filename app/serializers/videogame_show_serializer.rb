@@ -1,5 +1,5 @@
 class VideogameShowSerializer < ActiveModel::Serializer
-  attributes :id, :name, :release_year, :description, :admin_user
+  attributes :id, :name, :release_year, :description, :admin_user, :image
 
   def admin_user
     if current_user

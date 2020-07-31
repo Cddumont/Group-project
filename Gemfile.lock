@@ -55,6 +55,7 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.13)
+    betterlorem (0.1.2)
     bindex (0.8.1)
     builder (3.2.4)
     capybara (3.33.0)
@@ -94,6 +95,10 @@ GEM
     execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
+    faraday (1.0.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
     ffi (1.13.1)
     fog-aws (3.6.6)
       fog-core (~> 2.1)
@@ -154,6 +159,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.1)
     multi_json (1.15.0)
+    multipart-post (2.1.1)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
@@ -277,12 +283,15 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  betterlorem
   capybara
   carrierwave
   database_cleaner
   devise
   dotenv-rails
   factory_bot
+  faraday (= 1.0.1)
+  faraday_middleware (= 1.0.0)
   fog-aws
   foundation-rails (~> 6.5)
   jbuilder (~> 2.5)

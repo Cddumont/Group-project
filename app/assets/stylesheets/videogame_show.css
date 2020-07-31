@@ -1,6 +1,5 @@
 .show-page-infoblock{
   position: relative;
-  left: 50%;
 }
 
 .show-page-description {
@@ -29,4 +28,8 @@
   min-width: 20%;
   border-width: 2px;
   border-color: black;
+}
+
+.videogame-image {
+  max-width: 50%;
 }

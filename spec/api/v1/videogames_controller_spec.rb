@@ -41,7 +41,7 @@ RSpec.describe Api::V1::VideogamesController, type: :controller do
 
       returned_json = JSON.parse(response.body)
 
-      expect(returned_json["videogame"].length).to eq(6)
+      expect(returned_json["videogame"].length).to eq(7)
       expect(returned_json["videogame"]["name"]).to eq(videogame1.name)
       expect(returned_json["videogame"]["id"]).to eq(videogame1.id)
       expect(returned_json["videogame"]["release_year"]).to eq(videogame1.release_year)

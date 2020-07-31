@@ -1,0 +1,12 @@
+.videogames {
+  border-style: solid;
+  margin:10px;
+  color:black;
+}
+
+.index-game {
+  font-size: 2rem;
+  color: whitesmoke;
+  text-decoration: none;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
