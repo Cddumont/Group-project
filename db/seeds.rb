@@ -2,7 +2,6 @@ require 'faraday'
 require 'faraday_middleware'
 require 'betterlorem'
 
-
 Videogame.destroy_all
 Review.destroy_all
 User.destroy_all
