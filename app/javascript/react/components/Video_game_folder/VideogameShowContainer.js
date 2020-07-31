@@ -85,7 +85,6 @@ const VideogameShowContainer = (props) => {
       />
     )
   })
-  reviewsComponents.sort
 
   let errorMsg = <></>
   if (errors !== "") {
