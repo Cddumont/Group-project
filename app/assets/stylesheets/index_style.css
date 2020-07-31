@@ -5,8 +5,10 @@
 
 .videogames {
   border-style: solid;
+  border-radius: 5px;
   margin:10px;
   color:black;
+  width: 600px;
 }
 
 .index-game {
@@ -18,4 +20,30 @@
 
 .site-title {
   font-family: 'Recursive';
+  background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
 }
+
+#add-new-videogame{
+  font-size: 2rem;
+  color:black;
+  
+  border-color: black;
+  border-width: 5px;
+  border-style:solid;
+  border-radius: 5px;
+  padding:10px;
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+}
+
+.review-form-title {
+  font-family: 'Recursive'; 
+}
+
+#sign-up-login{
+  background-color: black;
+}
+
+#sign-in-login{
+  background-color: black;
+}
+
