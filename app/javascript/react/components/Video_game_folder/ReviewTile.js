@@ -5,7 +5,7 @@ const ReviewTile = props => {
 
   let title
   if (props.title) {
-    title = <p>Title: {props.title}</p>
+    title = <p>Title: <strong>{props.title}</strong></p>
   } else {
     title = <></>
   }

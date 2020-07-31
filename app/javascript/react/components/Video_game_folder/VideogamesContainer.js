@@ -34,13 +34,14 @@ const VideogamesContainer = (props) => {
         name={videogame.name}
         releaseYear={videogame.release_year}
         description={videogame.description}
+        image={videogame.image}
       />
     )
   })
 
   return (
     <>
-      <div className="grid-x">{videogamesComponents}</div>
+      <div className="grid-y">{videogamesComponents}</div>
       <Link to="/videogames/new">Add New Videogame</Link>
     </>
   )

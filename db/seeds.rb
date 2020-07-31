@@ -17,7 +17,7 @@ end
 conn.get.body["results"].each do |game|
   Videogame.create(
     name: game["name"],
-    release_year: game["release"],
+    release_year: game["released"],
     image: game["background_image"],
     description: BetterLorem.p(1, true, true)
   )

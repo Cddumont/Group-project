@@ -71,7 +71,7 @@ const VideogameShowContainer = (props) => {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-  const reviewsComponents = reviews.map((review) => {    
+  const reviewsComponents = reviews.sort((a,b) => b.vote_count - a.vote_count).map((review) => {    
     return (
       <ReviewTile
         key={review.id}
@@ -85,6 +85,7 @@ const VideogameShowContainer = (props) => {
       />
     )
   })
+  reviewsComponents.sort
 
   let errorMsg = <></>
   if (errors !== "") {
