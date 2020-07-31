@@ -41,8 +41,9 @@ const VideogamesContainer = (props) => {
 
   return (
     <>
-      <div className="grid-y">{videogamesComponents}</div>
-      <Link to="/videogames/new">Add New Videogame</Link>
+      <div className="grid-y">{videogamesComponents}
+        <Link to="/videogames/new" id="add-new-videogame" className="text-center">Add New Videogame</Link>
+      </div>
     </>
   )
 }

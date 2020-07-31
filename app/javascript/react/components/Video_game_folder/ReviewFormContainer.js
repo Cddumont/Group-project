@@ -80,7 +80,7 @@ const ReviewFormContainer = props => {
   return(
     <div>
       <form onSubmit={handleSubmit} className="new-review-form callout">
-        <h3>Add New Review:</h3>
+        <h3 className="review-form-title">Add New Review:</h3>
         {errorMessage}
         <ReactStars
           key={starsKey}
