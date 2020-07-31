@@ -1,10 +1,6 @@
 @font-face {
   font-family: 'Recursive';
-  src: url('Recursive.ttf')
-}
-
-body {
-  font-family: 'Recursive';
+  src: url(/assets/Recursive.ttf)
 }
 
 .videogames {
@@ -18,4 +14,8 @@ body {
   color: whitesmoke;
   text-decoration: none;
   text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+.site-title {
+  font-family: 'Recursive';
 }
