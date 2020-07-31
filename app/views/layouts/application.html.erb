@@ -14,7 +14,7 @@
     <section class="top-bar-section" >
       <ul class="right">
         <%- if current_user -%>
-          <li ><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li id="sign-out-login" ><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
           <li id="sign-up-login"><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li id="sign-in-login"><%= link_to 'Sign In', new_user_session_path %></li>
